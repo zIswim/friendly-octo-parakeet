@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 음식 레시피</title>
+    <!-- 구글 웹폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 기본 폰트 설정 */
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+
+        /* 배너 스타일 */
+        .banner {
+            background-color: #ffffcc;
+            color: #ffcc66;
+            text-align: center;
+            padding: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif; /* 배너에 다른 폰트 사용 */
+            position: relative; /* 버튼 위치를 위해 상대 위치 설정 */
+        }
+
+        /* 햄버거 메뉴 스타일 */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        /* 글쓰기 버튼 스타일 */
+        .write-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-image: url('write-icon.png'); /* 버튼 이미지 */
+            background-size: cover;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* 드롭다운 메뉴 스타일 */
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            background-color: #ffcc66;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .dropdown button {
+            display: block;
+            background-color: #ffcc66;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px 0;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+            font-family: 'Roboto', sans-serif; /* 버튼에 다른 폰트 사용 */
+        }
+
+        .dropdown button:hover {
+            background-color: #ff9933;
+        }
+
+        /* 카테고리 이름 스타일 */
+        .category-title {
+            text-align: center;
+            font-size: 1.5em;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        /* 카드 뉴스 형식 스타일 */
+        .blog-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4칸 크기로 설정 */
+            gap: 20px;
+            margin: 40px;
+        }
+
+        .blog-item {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .blog-item img {
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .blog-item p {
+            margin: 20px;
+            font-size: 0.9em; /* 설명문 글자 크기 줄임 */
+            font-family: 'Noto Sans', sans-serif;
+            line-height: 1.6; /* 설명문 내 줄 간격 */
+        }
+
+        /* 글쓰기 버튼 스타일 (배너 아래) */
+        .banner-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .write-button-below {
+            width: 40px;
+            height: 40px;
+            background-image: url('write-icon.png'); /* 버튼 이미지 */
+            background-size: cover;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 햄버거 메뉴 -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        &#9776;
+    </div>
+
+    <!-- 드롭다운 메뉴 -->
+    <div class="dropdown" id="dropdownMenu">
+        <button onclick="location.href='korean-dishes.html'">한식</button>
+        <button onclick="location.href='japanese-dishes.html'">일식</button>
+        <button onclick="location.href='chinese-dishes.html'">중식</button>
+        <button onclick="location.href='western-dishes.html'">양식</button>
+    </div>
+
+    <!-- 배너 -->
+    <div class="banner">
+        나의 음식 레시피
+        <!-- 글쓰기 버튼 (배너 오른쪽 상단) -->
+        <button class="write-button" onclick="location.href='write-recipe.html'"></button>
+    </div>
+
+    <!-- 글쓰기 버튼 (배너 아래) -->
+    <div class="banner-section">
+        <button class="write-button-below" onclick="location.href='write-recipe.html'"></button>
+    </div>
+
+    <!-- 음식 카테고리 제목 -->
+    <div class="category-title">대표 음식 카테고리</div>
+
+    <!-- 본문: 카드 뉴스 형식 -->
+    <div class="blog-section">
+        <div class="blog-item">
+            <a href="korean-dishes.html">
+                <img src="https://i.namu.wiki/i/gkQeyReHGR6KYY4I83d_T1h2AD0gLrWx0vj92Fgg3_qbM3mrY8wuHUlsxPOJ0Qc56JdIVtT2Be6VfzCPpZWlbh1-9Gz6orMaaVb1FK8UMn8b8bdzephKrWi0cUu8UYdaGRuQMPJ5IBWl1tjoyJUqXg.webp" alt="김치찌개">
+                <p><strong>김치찌개</strong><br>매콤하고 깊은 맛이 특징인 전통 한식입니다. 숙성된 김치와 돼지고기, 두부가 들어가며, 뜨거운 국물과 함께 먹는 것이 일품입니다.</p>
+            </a>
+        </div>
+        <div class="blog-item">
+            <a href="japanese-dishes.html">
+                <img src="https://i.namu.wiki/i/FifHR_Kxf6Rw6pFObbMmWVb-50QvvnNaJV6LzuF0q9UNYfct4yyP1mVGp2GpHw4NmQXw15Q45kl7aHujX1-uY6uVxm9_K5tjeQduZt4uCBgqqXze2RjjyW-9c_XE18f8FARk2gBIgqH-OTtDygs_LA.webp" alt="초밥">
+                <p><strong>초밥</strong><br>일본을 대표하는 음식으로, 신선한 생선과 초밥 밥이 조화를 이루는 요리입니다. 다양한 종류의 초밥이 있으며, 간장과 와사비와 함께 즐깁니다.</p>
+            </a>
+        </div>
+        <div class="blog-item">
+            <a href="chinese-dishes.html">
+                <img src="https://i.namu.wiki/i/oq4lIIMWjWby99nID7WAsR0e37jpl_WtTvMXO3OCY2-GPprqqg4PUYYdBnAJY0wZMqjU0C-n6D0f1yVS9WXIItoFNJ6YBKsYd7WnJz0SHAJuj5u6WONH4vzARgbTHT2TcrSlT5etOVQhf_MJIyeAVw.webp" alt="궁보계정">
+                <p><strong>궁보계정</strong><br>중국 사천 지역의 매콤하고 달콤한 요리입니다. 닭고기와 땅콩, 채소를 볶아 만든 요리로, 특유의 향신료와 매운맛이 특징입니다.</p>
+            </a>
+        </div>
+        <div class="blog-item">
+            <a href="western-dishes.html">
+                <img src="https://i.namu.wiki/i/ShDNBDQ86DqgqmSeIQfyD3rQnN1bDroj3MuTlJn1aKOzKCqAnFoGbu9oeNlVmHp5kPalyWiBFN249r-DdsGlpYnxp1EJVnrSFKg23CGtlbGwSdgmuC_EScDCHvy6eUF832rB0u5MvBh5oa77qSJ43A.webp" alt="스파게티">
+                <p><strong>스파게티</strong><br>이탈리아를 대표하는 파스타 요리로, 다양한 소스와 함께 제공됩니다. 클래식한 토마토 소스나 크림 소스와 함께 즐길 수 있습니다.</p>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('dropdownMenu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
